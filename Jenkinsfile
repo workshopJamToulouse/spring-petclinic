@@ -2,15 +2,15 @@ pipeline {
   agent any
   stages {
     stage('build & unit tests') {
+      agent {
+        label 'build'
+      }
       steps {
-        node(label: 'build') {
               withMaven(
                   maven: 'M3') {
 
                 sh "mvn clean install"
               }
-        }
-
       }
     }
     stage('static-analysis') {
