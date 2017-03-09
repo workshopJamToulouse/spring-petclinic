@@ -2,15 +2,12 @@ pipeline {
   agent any
   stages {
     stage('build & unit tests') {
-      agent {
-        label 'build'
-      }
       steps {
-              withMaven(
-                  maven: 'M3') {
+        withMaven(maven: 'M3') {
+          sh 'mvn clean install'
+          stash(name: 'toto', includes: 'target/\*.jar')
+        }
 
-                sh "mvn clean install"
-              }
       }
     }
     stage('static-analysis') {
