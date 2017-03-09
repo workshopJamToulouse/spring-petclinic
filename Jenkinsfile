@@ -4,7 +4,11 @@ pipeline {
     stage('build & unit tests') {
       steps {
         node(label: 'build') {
-          sleep(time: 10, unit: 'SECONDS')
+              withMaven(
+                  maven: 'M3') {
+
+                sh "mvn clean install"
+              }
         }
 
       }
@@ -55,7 +59,7 @@ pipeline {
     stage('manual-approval') {
       steps {
         node(label: 'build') {
-          sleep(time: 10, unit: 'SECONDS')
+          input 'go no go ?'
         }
 
       }
