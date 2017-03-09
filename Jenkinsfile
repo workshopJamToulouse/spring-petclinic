@@ -5,7 +5,7 @@ pipeline {
       steps {
         withMaven(maven: 'M3') {
           sh 'mvn clean install'
-          stash(name: 'toto', includes: 'target/\\*.jar')
+          stash(name: 'toto', includes: 'target/\*.jar')
         }
 
       }
@@ -48,7 +48,7 @@ pipeline {
     stage('staging') {
       steps {
         node(label: 'build') {
-          sleep(time: 10, unit: 'SECONDS')
+          unstash 'toto'
         }
 
       }
@@ -64,7 +64,7 @@ pipeline {
     stage('deploy') {
       steps {
         node(label: 'build') {
-          sleep(time: 10, unit: 'SECONDS')
+          unstash 'toto'
         }
 
       }
