@@ -4,7 +4,7 @@ pipeline {
     stage('build & unit tests') {
       steps {
         node(label: 'build') {
-          sleep(time: '9', unit: 'SECONDS')
+          sleep(time: 10, unit: 'SECONDS')
         }
 
       }
@@ -12,7 +12,7 @@ pipeline {
     stage('static-analysis') {
       steps {
         node(label: 'build') {
-          sleep(time: '9', unit: 'SECONDS')
+          sleep(time: 10, unit: 'SECONDS')
         }
 
       }
@@ -22,21 +22,21 @@ pipeline {
         parallel(
           "chrome": {
             node(label: 'build') {
-              sleep(time: '9', unit: 'SECONDS')
+              sleep(time: 10, unit: 'SECONDS')
             }
 
 
           },
           "edge": {
             node(label: 'build') {
-              sleep(time: '9', unit: 'SECONDS')
+              sleep(time: 10, unit: 'SECONDS')
             }
 
 
           },
           "firefox": {
             node(label: 'build') {
-              sleep(time: '9', unit: 'SECONDS')
+              sleep(time: 10, unit: 'SECONDS')
             }
 
 
@@ -47,7 +47,7 @@ pipeline {
     stage('staging') {
       steps {
         node(label: 'build') {
-          sleep(time: '9', unit: 'SECONDS')
+          sleep(time: 10, unit: 'SECONDS')
         }
 
       }
@@ -55,7 +55,7 @@ pipeline {
     stage('manual-approval') {
       steps {
         node(label: 'build') {
-          sleep(time: '9', unit: 'SECONDS')
+          sleep(time: 10, unit: 'SECONDS')
         }
 
       }
@@ -63,7 +63,7 @@ pipeline {
     stage('deploy') {
       steps {
         node(label: 'build') {
-          sleep(time: '9', unit: 'SECONDS')
+          sleep(time: 10, unit: 'SECONDS')
         }
 
       }
