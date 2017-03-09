@@ -5,7 +5,7 @@ pipeline {
       steps {
         withMaven(maven: 'M3') {
           sh 'mvn clean install'
-          stash(name: 'toto', includes: 'target/\*.jar')
+          stash(name: 'toto', includes: 'target/\\*.jar')
         }
 
       }
